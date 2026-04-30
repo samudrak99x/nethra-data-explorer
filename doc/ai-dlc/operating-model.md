@@ -43,6 +43,7 @@ Each bolt has:
 
 The first bolt family is Architecture Bolts, which create the initial system skeleton, Azure mapping, container workflow, auth, and deployment baseline before other bolt families begin.
 
+
 ## Agent Roles
 
 - Architect Agent
