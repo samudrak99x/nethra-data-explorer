@@ -1,0 +1,266 @@
+Nethra Data Explorer - Architecture Plan
+=========================================
+
+Product Purpose
+---------------
+The product is a dynamic, agentic data exploration app.
+
+Users import datasets, confirm schema and metadata, and the app automatically generates a usable analytics interface with filters, charts, insight cards, data quality warnings, agent explanations, and reports.
+
+The first product focus is poverty tracking, but the architecture must support other domains such as health, education, climate, economy, and social indicators.
+
+The product should also go beyond traditional data discovery. It should discover and explain the dataset ontology: entities, indicators, dimensions, units, relationships, data quality signals, and the reasoning behind generated interface elements.
+
+The architecture should support a local-first, containerized workflow for development and testing, followed by an Azure-focused cloud deployment path. The same service boundaries used locally should be reused in cloud deployment so the product can be verified end to end before release.
+
+
+Core Architecture Principle
+---------------------------
+The app is not built around hardcoded topic pages.
+
+Instead, the app is driven by:
+- Dataset rows
+- Dataset schema
+- Dataset metadata
+- Dataset ontology
+- Semantic tags
+- User-selected filters
+- Analysis engine output
+- Agent context
+
+When a dataset changes, the UI, charts, filters, insights, and agent behavior should be regenerated from the dataset schema and metadata.
+
+Deployment Principle
+--------------------
+The first runnable version should be containerized locally, ideally with Docker Compose or an equivalent orchestration approach. Major infrastructure choices should be written down as architecture decisions so the container-based local environment and the Azure deployment path stay aligned.
+
+
+Logical Architecture
+====================
+
+1. Data Layer
+-------------
+Responsible for storing and managing imported data, schema, metadata, and normalized records.
+
+Main Components:
+- Imported Dataset
+- Dataset Parser
+- Normalized Data Store
+- Dataset Schema Store
+- Dataset Metadata Store
+- Dataset Library
+
+Responsibilities:
+- Accept CSV and JSON files
+- Normalize imported rows
+- Store raw and cleaned data
+- Store inferred schema
+- Store user-confirmed metadata
+- Track dataset source, unit, description, and update date
+- Support multiple datasets later
+
+
+2. Schema And Metadata Layer
+----------------------------
+Responsible for understanding the structure and meaning of a dataset.
+
+Main Components:
+- Schema Inference Engine
+- Column Role Detector
+- Ontology Discovery Engine
+- Semantic Tagging Engine
+- Metadata Editor
+- Schema Validation Engine
+
+Column Roles:
+- Time column
+- Geography column
+- Measure column
+- Dimension column
+- Category column
+- Identifier column
+- Ignored column
+
+Responsibilities:
+- Detect column data types
+- Detect year/date columns
+- Detect country/region columns
+- Detect numeric measures
+- Detect categorical dimensions
+- Detect entities, indicators, dimensions, units, and relationships
+- Assign semantic tags to columns
+- Assign confidence scores to inferred roles
+- Allow user correction
+- Validate required metadata
+- Prepare schema for the UI generator and analysis engine
+
+
+2.5. Ontology And Explainability Layer
+--------------------------------------
+Responsible for building an explainable semantic model of each dataset.
+
+Main Components:
+- Ontology Model
+- Semantic Concept Registry
+- Column-To-Concept Mapper
+- Relationship Detector
+- Explainable UI Reasoning Engine
+- Ontology Confirmation UI
+
+Ontology Concepts:
+- Entity
+- Indicator
+- Dimension
+- Time
+- Geography
+- Unit
+- Source
+- Derived measure
+- Data quality signal
+
+Example Poverty Ontology:
+- country is an entity
+- region is an entity or geography dimension
+- year is a time concept
+- poverty_rate is an indicator
+- extreme_poverty_rate is an indicator
+- population is a population measure
+- population_in_poverty is an affected-population indicator
+- urban_rural is a dimension
+- gender is a dimension
+- percent is a unit
+- people is a unit
+
+Example Semantic Tags:
+- entity.country
+- entity.region
+- time.year
+- indicator.poverty_rate
+- indicator.extreme_poverty_rate
+- indicator.population_count
+- indicator.affected_population
+- dimension.gender
+- dimension.urban_rural
+- unit.percent
+- unit.people
+- quality.missing_values
+- quality.possible_outlier
+
+Responsibilities:
+- Discover the semantic structure of imported data
+- Tag columns with domain concepts
+- Explain why a column became a filter, measure, entity, or time control
+- Explain why a chart type was recommended
+- Expose assumptions and confidence scores
+- Let the user approve or correct ontology tags
+- Store approved ontology with dataset metadata
+
+
+2.6. Expert Knowledge Graph Layer
+---------------------------------
+Responsible for enriching the automatically discovered ontology with human expert knowledge, multimedia evidence, provenance, and validated relationships.
+
+Main Components:
+- Knowledge Graph Store
+- Knowledge Graph Editor
+- Expert Conversation Capture
+- Expert Claim Extractor
+- Evidence Artifact Store
+- Provenance Tracker
+- Human Validation Workflow
+- Expert Knowledge Agent
+
+Knowledge Graph Concepts:
+- Entity
+- Indicator
+- Dimension
+- Relationship
+- Claim
+- Evidence
+- Provenance
+- Confidence
+- Validation status
+
+Responsibilities:
+- Let users add, edit, and remove knowledge graph entities
+- Let users add relationships between entities
+- Capture expert knowledge through conversation
+- Extract candidate claims from expert conversations and uploaded materials
+- Attach documents, photos, videos, notes, source URLs, and dataset annotations as evidence
+- Track who provided knowledge and when
+- Track confidence and validation status
+- Require human approval before extracted claims become trusted knowledge
+- Feed validated expert knowledge into the agent context
+- Clearly separate dataset-derived facts from expert-provided knowledge
+
+
+3. Dynamic Application Layer
+----------------------------
+Responsible for turning schema and metadata into an interactive app experience.
+
+Main Components:
+- Dynamic UI Generator
+- Filter Generator
+- Chart Recommendation Engine
+- Chart Configuration Engine
+- Query And Filter Engine
+- Dashboard State Manager
+
+Responsibilities:
+- Generate filters from dimensions
+- Generate time controls from time columns
+- Generate measure selectors from numeric measures
+- Generate semantic controls from ontology tags
+- Recommend chart types based on available fields
+- Build dashboard layouts
+- Keep chart state and filter state in sync
+- Slice the dataset based on selected filters
+- Explain why each UI element was generated
+
+Dynamic UI Rules:
+- Time column + numeric measure creates a line chart option
+- Geography column + numeric measure creates map/table/ranking options
+- Category column + numeric measure creates a bar chart option
+- Multiple numeric measures create a measure selector
+- Dimensions create filters
+- Metadata source creates a citation/source panel
+- Missing metadata creates a warning or prompt
+- Entity tags create entity selectors
+- Indicator tags create measure selectors
+- Dimension tags create filter controls
+- Unit tags improve chart labels and explanations
+
+
+4. Visualization Layer
+----------------------
+Responsible for presenting selected data as charts, tables, and summary views.
+
+Main Components:
+- Line Chart
+- Bar Chart
+- Ranking Table
+- Summary Cards
+- Data Preview Table
+- Data Quality Panel
+
+Responsibilities:
+- Render chart views from chart configuration
+- Update visualizations when filters change
+- Show latest values
+- Show rankings
+- Show comparisons
+- Show missing-data or empty-state messages
+- Keep chart interactions simple and understandable
+
+Initial Chart Types:
+- Line chart for time series
+- Bar chart for category comparison
+- Ranking table for latest values
+- Summary cards for key metrics
+
+Later Chart Types:
+- Map view
+- Scatter plot
+- Heatmap
+- Small multiples
+- Distribution chart
