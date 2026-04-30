@@ -39,6 +39,7 @@ Run after Phase B:
 - [x] Verify commit workflow
 - [x] Push branch to GitHub remote
 - [!] Verify pull request workflow
+- [x] Publish Phase A baseline to main
 - [x] Create PR template
 - [x] Check Jira MCP availability
 - [ ] Configure Jira project/board if available

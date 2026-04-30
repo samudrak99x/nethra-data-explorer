@@ -181,3 +181,22 @@ Implications:
 - `PR_DRAFT_PHASE_A.md` contains the comprehensive PR description.
 - Branch `phase-a/sprint-0-planning-baseline` has been pushed to GitHub.
 - Pull request creation is pending; use the GitHub compare URL and `PR_DRAFT_PHASE_A.md`.
+
+
+### 2026-04-30: Publish Phase A Baseline To Main
+
+Status: Accepted
+
+Context:
+The user requested merging the Phase A branch.
+
+Decision:
+Publish the Phase A branch tip directly to `main`.
+
+Rationale:
+The GitHub repository was new and only had the Phase A branch. Creating `main` from the Phase A branch tip is equivalent to accepting the initial baseline.
+
+Implications:
+- `main` now contains the Phase A planning baseline.
+- This was a direct baseline merge, not a reviewed pull request merge.
+- Future work should use pull requests once normal PR flow is available.
