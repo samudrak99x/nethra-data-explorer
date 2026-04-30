@@ -1,0 +1,110 @@
+Nethra Data Explorer - Sprint And Task Plan
+============================================
+
+Product Goal
+------------
+Build an agentic data-exploration app where users can import a dataset, define or confirm metadata, discover the dataset's ontology and semantic structure, and the app dynamically generates filters, charts, summary cards, data quality checks, trend analysis, natural-language explanations, suggested insights, and reports.
+
+The first use case is poverty tracking, but the system should later support health, education, climate, economy, and other data domains without creating one custom page per dataset.
+
+
+Recommended Stack
+-----------------
+- Frontend: React + TypeScript
+- Charts: Recharts or Apache ECharts
+- Data import: CSV/JSON upload
+- Initial data: mock poverty datasets
+- Agent layer: rule-based analysis first, OpenAI integration later
+- Storage: local browser storage first, database later
+- Testing: unit tests, UI tests, and manual demo checklists
+- Delivery workflow: Codex implementation workspace, GitHub commits, pull requests, review notes
+- Sprint tracking: Jira MCP if available, otherwise markdown progress tracker files
+
+
+Core Principle
+--------------
+Dataset schema and metadata drive the whole app.
+
+When the dataset changes, the UI, filters, charts, insights, and agent behavior should regenerate automatically.
+
+The app should go beyond traditional data discovery by explaining the semantic meaning of the dataset:
+- What entities exist in the data
+- What indicators or measures are tracked
+- Which dimensions describe those indicators
+- How columns relate to each other
+- What patterns, shifts, anomalies, and segment differences exist
+- Which statistical tests or models are appropriate
+- What predictions can be made with uncertainty
+- Why certain filters, charts, and insights were generated
+- What assumptions the app made while interpreting the dataset
+- How the agent arrived at an explanation
+
+Architecture And Delivery Governance
+------------------------------------
+The product should also have a dedicated architecture thinking track that keeps the technical foundation visible:
+
+- Architect agent for system-wide design and stack decisions
+- Architecture decision records for important technical choices
+- Deployment and DevOps planning for environments, CI/CD, and release flow
+- Security, secrets, monitoring, and rollback decisions documented early
+- Clear separation between product intent, implementation intent, and architecture intent
+
+
+Sprint 0.5: Architecture Elaboration And Project Skeleton
+==========================================================
+
+Goal
+----
+Turn the product intent and Azure/container strategy into a concrete technical skeleton before feature implementation begins. This sprint creates the architectural baseline for the app, deployment structure, and security model.
+
+Features
+--------
+- Architecture elaboration workshop
+- Project skeleton creation
+- Container-first local environment
+- Azure deployment structure
+- Authentication and authorization strategy
+- API and service boundary definition
+- DevOps pipeline outline
+- Architecture decision records
+- Environment configuration model
+- Secrets and configuration handling
+
+Tasks
+-----
+- Define the initial architecture decision records
+- Confirm frontend, backend, storage, and agent stack choices
+- Define local container layout and service boundaries
+- Create project skeleton folders and base modules
+- Scaffold frontend app shell
+- Scaffold backend/API shell
+- Scaffold analysis/service worker shell if needed
+- Define authentication approach
+- Define authorization roles and permissions
+- Define environment variables and secrets strategy
+- Define local dev, staging, and production environment layout
+- Define Azure deployment shape and service mapping
+- Create deployment and CI/CD plan
+- Add initial Docker Compose or equivalent local orchestration structure
+- Add initial health-check and startup flow
+- Link architecture decisions back to the sprint tracker
+
+Testing Plan
+------------
+- Architecture decisions are documented
+- Project skeleton is created
+- Local container workflow is defined
+- Authentication and authorization approach is documented
+- Deployment structure is documented
+- DevOps pipeline outline exists
+- Environment strategy is clear
+- The sprint ends with a reviewable architecture baseline
+
+Demo At End
+-----------
+The team can review a concrete architecture baseline that shows:
+- how the project is structured
+- how local containers will run
+- how authentication and authorization will work
+- how Azure deployment is expected to map from the local environment
+- how the DevOps path will evolve
