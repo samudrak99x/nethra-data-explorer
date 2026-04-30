@@ -55,7 +55,7 @@ Notes:
 - GitHub commits confirmed:
   - `156f1c6` docs: establish Nethra planning baseline
   - `0dfa4f7` docs: record phase A branch status
-- Pull request creation remains pending; open the compare URL and use `PR_DRAFT_PHASE_A.md` as the body.
+- Pull request creation remains pending; open the compare URL and use `doc/PR_DRAFT_PHASE_A.md` as the body.
 - Phase A baseline was published directly to `main` because the repository was new and no separate `main` history existed.
 - This was a direct baseline merge, not a reviewed PR merge.
 

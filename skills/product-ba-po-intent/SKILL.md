@@ -10,11 +10,11 @@ Use this skill when implementing or planning Nethra Data Explorer work.
 ## Core Workflow
 
 1. Read the relevant intent files before making implementation choices:
-   - `product-intent-knowledge-base.md`
-   - `functional-intents.md`
-   - `non-functional-intents.md`
-   - `intent-identification-workflow.md`
-   - `aidlc-gap-analysis.md`
+   - `doc/product-intent-knowledge-base.md`
+   - `doc/functional-intents.md`
+   - `doc/non-functional-intents.md`
+   - `doc/intent-identification-workflow.md`
+   - `doc/aidlc-gap-analysis.md`
 
 2. Before implementation, identify:
    - business intent
@@ -34,8 +34,8 @@ Use this skill when implementing or planning Nethra Data Explorer work.
    - uncertainty shown for predictions
 
 4. Update sprint tracking files after meaningful work:
-   - `sprint-progress.md`
-   - `sprint-review-notes.md`
+   - `doc/sprint-progress.md`
+   - `doc/sprint-review-notes.md`
 
 ## Decision Rules
 

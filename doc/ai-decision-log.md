@@ -178,9 +178,9 @@ The branch and commit provide a reviewable baseline for Sprint -1 and Sprint 0 w
 
 Implications:
 - Local commit `156f1c6` contains the Phase A baseline.
-- `PR_DRAFT_PHASE_A.md` contains the comprehensive PR description.
+- `doc/PR_DRAFT_PHASE_A.md` contains the comprehensive PR description.
 - Branch `phase-a/sprint-0-planning-baseline` has been pushed to GitHub.
-- Pull request creation is pending; use the GitHub compare URL and `PR_DRAFT_PHASE_A.md`.
+- Pull request creation is pending; use the GitHub compare URL and `doc/PR_DRAFT_PHASE_A.md`.
 
 
 ### 2026-04-30: Publish Phase A Baseline To Main

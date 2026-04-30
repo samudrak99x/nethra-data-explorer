@@ -59,9 +59,9 @@ The first target domain is **poverty tracking**, but the architecture is intende
 ### Product And Sprint Planning
 
 - `task-plan.txt`
-- `sprint-progress.md`
-- `sprint-backlog.md`
-- `sprint-review-notes.md`
+- `doc/sprint-progress.md`
+- `doc/sprint-backlog.md`
+- `doc/sprint-review-notes.md`
 
 These define the delivery model, sprint sequence, task breakdown, progress tracking, and review checkpoints.
 
@@ -69,7 +69,7 @@ These define the delivery model, sprint sequence, task breakdown, progress track
 ### Architecture
 
 - `architecture-plan.txt`
-- `architecture-diagram.svg`
+- `doc/architecture-diagram.svg`
 
 These define the layered architecture:
 
@@ -91,32 +91,32 @@ These define the layered architecture:
 
 ### AI-DLC Operating Model
 
-- `aidlc-gap-analysis.md`
-- `ai-decision-log.md`
-- `ai-definition-of-done.md`
-- `agent-eval-plan.md`
-- `scrum-to-aidlc-transition-map.md`
-- `conversational-discovery-log.md`
+- `doc/aidlc-gap-analysis.md`
+- `doc/ai-decision-log.md`
+- `doc/ai-definition-of-done.md`
+- `doc/agent-eval-plan.md`
+- `doc/scrum-to-aidlc-transition-map.md`
+- `doc/conversational-discovery-log.md`
 
 These documents map Scrum concepts into AI-DLC/Codex-agent concepts and define how the team should manage human approval, agent work packages, evals, traceability, and AI-generated implementation.
 
 
 ### Intent Documents
 
-- `intent-identification-workflow.md`
+- `doc/intent-identification-workflow.md`
 - `intent-brief-template.md`
-- `functional-intents.md`
-- `non-functional-intents.md`
-- `product-intent-knowledge-base.md`
-- `assumptions-and-risks.md`
-- `acceptance-criteria-catalog.md`
+- `doc/functional-intents.md`
+- `doc/non-functional-intents.md`
+- `doc/product-intent-knowledge-base.md`
+- `doc/assumptions-and-risks.md`
+- `doc/acceptance-criteria-catalog.md`
 
 These documents define the business/product intent, functional scope, quality expectations, assumptions, risks, and reusable acceptance criteria.
 
 
 ### Agent Roles
 
-- `agent-role-definitions.md`
+- `doc/agent-role-definitions.md`
 
 Initial agent roles include:
 
