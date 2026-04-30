@@ -1,12 +1,43 @@
 # Nethra Data Explorer MVP Bolt Catalog
 
-This document captures the MVP bolt structure for the first AI-DLC release path.
+This document captures the MVP structure for the first AI-DLC release path.
 
 ## MVP Structure
 
-The MVP is organized as bolt families, each containing small execution units.
+The MVP is organized as stages. Each stage contains bolts. Each bolt is elaborated into units.
 
-### Bolt Family 0: Architecture
+## MVP Stages
+
+### Stage 1: Data Onboard & Schema
+
+Includes bolts:
+- Architecture Bolt
+- Foundation Bolt
+- Import Bolt
+
+### Stage 2: Generated UI + Charts
+
+Includes bolts:
+- Interface Bolt
+- Visualization Bolt
+
+### Stage 3: Basic Analysis & Explainability
+
+Includes bolts:
+- Pattern Bolt
+- Explainability Bolt
+
+### Stage 4: Testable Report + Polish
+
+Includes bolts:
+- Statistics Bolt
+- Conversation Bolt
+- Reasoning Bolt
+- Narrative Bolt
+- Workspace Bolt
+- Delivery Bolt
+
+### Architecture Bolt
 
 Purpose:
 Establish the technical foundation before feature work starts.
@@ -21,7 +52,7 @@ Units:
 - define secrets and environment strategy
 - define deployment and health-check baseline
 
-### Bolt Family 0.7: Foundation
+### Foundation Bolt
 
 Purpose:
 Create the initial app shell and product structure.
@@ -38,7 +69,7 @@ Units:
 - build static dataset-loaded screen
 - add basic navigation
 
-### Bolt Family 1: Import
+### Import Bolt
 
 Purpose:
 Import datasets and detect structure.
@@ -51,7 +82,7 @@ Units:
 - add confidence labels
 - allow user correction of detected roles
 
-### Bolt Family 2: Interface
+### Interface Bolt
 
 Purpose:
 Generate the UI from dataset structure.
@@ -64,7 +95,7 @@ Units:
 - build reusable chart container
 - manage selected dataset state
 
-### Bolt Family 2.5: Meaning
+### Meaning Bolt
 
 Purpose:
 Discover ontology and semantic tags.
@@ -77,7 +108,7 @@ Units:
 - detect indicators and dimensions
 - allow users to approve or correct tags
 
-### Bolt Family 2.6: Knowledge
+### Knowledge Bolt
 
 Purpose:
 Enrich ontology with expert knowledge.
@@ -90,7 +121,7 @@ Units:
 - validate expert knowledge
 - update knowledge graph
 
-### Bolt Family 3: Visualization
+### Visualization Bolt
 
 Purpose:
 Render the data as charts and views.
@@ -103,7 +134,7 @@ Units:
 - implement filtering pipeline
 - implement latest-year calculation
 
-### Bolt Family 4: Pattern
+### Pattern Bolt
 
 Purpose:
 Detect trends and changes.
@@ -115,7 +146,7 @@ Units:
 - build pattern scoring and ranking
 - produce explainable evidence for each pattern
 
-### Bolt Family 4.5: Explainability
+### Explainability Bolt
 
 Purpose:
 Turn patterns into understandable findings.
@@ -128,7 +159,7 @@ Units:
 - connect results to agent context
 - add explainable AI response rules
 
-### Bolt Family 4.6: Statistics
+### Statistics Bolt
 
 Purpose:
 Run baseline statistical analysis and prediction.
@@ -145,7 +176,7 @@ Units:
 - implement simple linear regression baseline
 - implement simple time-series forecast baseline
 
-### Bolt Family 5: Conversation
+### Conversation Bolt
 
 Purpose:
 Enable interactive agent explanation.
@@ -158,7 +189,7 @@ Units:
 - connect classifier to statistical results
 - generate natural-language summaries
 
-### Bolt Family 6: Reasoning
+### Reasoning Bolt
 
 Purpose:
 Add LLM-backed reasoning with guardrails.
@@ -170,7 +201,7 @@ Units:
 - add response validation
 - add fallback to rule-based agent
 
-### Bolt Family 7: Narrative
+### Narrative Bolt
 
 Purpose:
 Generate reports.
@@ -181,7 +212,7 @@ Units:
 - add markdown export
 - add saved report state
 
-### Bolt Family 8: Workspace
+### Workspace Bolt
 
 Purpose:
 Support reuse and persistence.
@@ -194,7 +225,7 @@ Units:
 - add sample datasets
 - add dataset deletion
 
-### Bolt Family 9: Delivery
+### Delivery Bolt
 
 Purpose:
 Polish and prepare the product for review.
@@ -215,7 +246,8 @@ Units:
 - One outcome per bolt
 - One validation check per bolt
 - Use steering points for ambiguous or high-risk bolts
+- Units are created during bolt elaboration and capture the actionable steps for the bolt
 
 ## MVP Exit Condition
 
-The MVP is complete when the architecture, import, meaning, visualization, pattern, explainability, statistics, conversation, reasoning, narrative, workspace, and delivery bolt families are all represented and the first cycle can be executed end to end.
+The MVP is complete when every MVP stage has its bolts defined, each bolt has been elaborated into units, and the first cycle can be executed end to end.
