@@ -36,8 +36,9 @@ Run after Phase B:
 - [x] Confirm GitHub authentication
 - [x] Configure GitHub MCP/app access if needed
 - [x] Verify branch creation
-- [!] Verify commit workflow
-- [ ] Verify pull request workflow
+- [x] Verify commit workflow
+- [!] Push branch to GitHub remote
+- [!] Verify pull request workflow
 - [x] Create PR template
 - [x] Check Jira MCP availability
 - [ ] Configure Jira project/board if available

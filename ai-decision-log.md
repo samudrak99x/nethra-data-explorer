@@ -161,3 +161,23 @@ Implications:
 - The local repository is now linked to the intended GitHub remote.
 - The GitHub plugin repository list does not yet show this repo, so app installation/access may need to refresh.
 - Commits and push still require local Git identity and remote repository availability.
+
+
+### 2026-04-30: Create Phase A Planning Baseline Branch And Commit
+
+Status: Accepted
+
+Context:
+The user requested a branch and pull request with comprehensive notes for the planning baseline.
+
+Decision:
+Create local branch `phase-a/sprint-0-planning-baseline`, add a comprehensive pull request draft, and commit the Phase A planning baseline locally.
+
+Rationale:
+The branch and commit provide a reviewable baseline for Sprint -1 and Sprint 0 work even though remote push and PR creation are currently blocked by GitHub credential/tooling limitations.
+
+Implications:
+- Local commit `156f1c6` contains the Phase A baseline.
+- `PR_DRAFT_PHASE_A.md` contains the comprehensive PR description.
+- Push is blocked by missing local HTTPS Git credentials.
+- Pull request creation is pending until the branch can be pushed or a connector PR creation tool is available.
