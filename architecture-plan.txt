@@ -1,0 +1,1181 @@
+Nethra Data Explorer - Architecture Plan
+=========================================
+
+Product Purpose
+---------------
+The product is a dynamic, agentic data exploration app.
+
+Users import datasets, confirm schema and metadata, and the app automatically generates a usable analytics interface with filters, charts, insight cards, data quality warnings, agent explanations, and reports.
+
+The first product focus is poverty tracking, but the architecture must support other domains such as health, education, climate, economy, and social indicators.
+
+The product should also go beyond traditional data discovery. It should discover and explain the dataset ontology: entities, indicators, dimensions, units, relationships, data quality signals, and the reasoning behind generated interface elements.
+
+
+Core Architecture Principle
+---------------------------
+The app is not built around hardcoded topic pages.
+
+Instead, the app is driven by:
+- Dataset rows
+- Dataset schema
+- Dataset metadata
+- Dataset ontology
+- Semantic tags
+- User-selected filters
+- Analysis engine output
+- Agent context
+
+When a dataset changes, the UI, charts, filters, insights, and agent behavior should be regenerated from the dataset schema and metadata.
+
+
+Logical Architecture
+====================
+
+1. Data Layer
+-------------
+Responsible for storing and managing imported data, schema, metadata, and normalized records.
+
+Main Components:
+- Imported Dataset
+- Dataset Parser
+- Normalized Data Store
+- Dataset Schema Store
+- Dataset Metadata Store
+- Dataset Library
+
+Responsibilities:
+- Accept CSV and JSON files
+- Normalize imported rows
+- Store raw and cleaned data
+- Store inferred schema
+- Store user-confirmed metadata
+- Track dataset source, unit, description, and update date
+- Support multiple datasets later
+
+
+2. Schema And Metadata Layer
+----------------------------
+Responsible for understanding the structure and meaning of a dataset.
+
+Main Components:
+- Schema Inference Engine
+- Column Role Detector
+- Ontology Discovery Engine
+- Semantic Tagging Engine
+- Metadata Editor
+- Schema Validation Engine
+
+Column Roles:
+- Time column
+- Geography column
+- Measure column
+- Dimension column
+- Category column
+- Identifier column
+- Ignored column
+
+Responsibilities:
+- Detect column data types
+- Detect year/date columns
+- Detect country/region columns
+- Detect numeric measures
+- Detect categorical dimensions
+- Detect entities, indicators, dimensions, units, and relationships
+- Assign semantic tags to columns
+- Assign confidence scores to inferred roles
+- Allow user correction
+- Validate required metadata
+- Prepare schema for the UI generator and analysis engine
+
+
+2.5. Ontology And Explainability Layer
+--------------------------------------
+Responsible for building an explainable semantic model of each dataset.
+
+Main Components:
+- Ontology Model
+- Semantic Concept Registry
+- Column-To-Concept Mapper
+- Relationship Detector
+- Explainable UI Reasoning Engine
+- Ontology Confirmation UI
+
+Ontology Concepts:
+- Entity
+- Indicator
+- Dimension
+- Time
+- Geography
+- Unit
+- Source
+- Derived measure
+- Data quality signal
+
+Example Poverty Ontology:
+- country is an entity
+- region is an entity or geography dimension
+- year is a time concept
+- poverty_rate is an indicator
+- extreme_poverty_rate is an indicator
+- population is a population measure
+- population_in_poverty is an affected-population indicator
+- urban_rural is a dimension
+- gender is a dimension
+- percent is a unit
+- people is a unit
+
+Example Semantic Tags:
+- entity.country
+- entity.region
+- time.year
+- indicator.poverty_rate
+- indicator.extreme_poverty_rate
+- indicator.population_count
+- indicator.affected_population
+- dimension.gender
+- dimension.urban_rural
+- unit.percent
+- unit.people
+- quality.missing_values
+- quality.possible_outlier
+
+Responsibilities:
+- Discover the semantic structure of imported data
+- Tag columns with domain concepts
+- Explain why a column became a filter, measure, entity, or time control
+- Explain why a chart type was recommended
+- Expose assumptions and confidence scores
+- Let the user approve or correct ontology tags
+- Store approved ontology with dataset metadata
+
+
+2.6. Expert Knowledge Graph Layer
+---------------------------------
+Responsible for enriching the automatically discovered ontology with human expert knowledge, multimedia evidence, provenance, and validated relationships.
+
+Main Components:
+- Knowledge Graph Store
+- Knowledge Graph Editor
+- Expert Conversation Capture
+- Expert Claim Extractor
+- Evidence Artifact Store
+- Provenance Tracker
+- Human Validation Workflow
+- Expert Knowledge Agent
+
+Knowledge Graph Concepts:
+- Entity
+- Indicator
+- Dimension
+- Relationship
+- Claim
+- Evidence
+- Provenance
+- Confidence
+- Validation status
+
+Responsibilities:
+- Let users add, edit, and remove knowledge graph entities
+- Let users add relationships between entities
+- Capture expert knowledge through conversation
+- Extract candidate claims from expert conversations and uploaded materials
+- Attach documents, photos, videos, notes, source URLs, and dataset annotations as evidence
+- Track who provided knowledge and when
+- Track confidence and validation status
+- Require human approval before extracted claims become trusted knowledge
+- Feed validated expert knowledge into the agent context
+- Clearly separate dataset-derived facts from expert-provided knowledge
+
+
+3. Dynamic Application Layer
+----------------------------
+Responsible for turning schema and metadata into an interactive app experience.
+
+Main Components:
+- Dynamic UI Generator
+- Filter Generator
+- Chart Recommendation Engine
+- Chart Configuration Engine
+- Query And Filter Engine
+- Dashboard State Manager
+
+Responsibilities:
+- Generate filters from dimensions
+- Generate time controls from time columns
+- Generate measure selectors from numeric measures
+- Generate semantic controls from ontology tags
+- Recommend chart types based on available fields
+- Build dashboard layouts
+- Keep chart state and filter state in sync
+- Slice the dataset based on selected filters
+- Explain why each UI element was generated
+
+Dynamic UI Rules:
+- Time column + numeric measure creates a line chart option
+- Geography column + numeric measure creates map/table/ranking options
+- Category column + numeric measure creates a bar chart option
+- Multiple numeric measures create a measure selector
+- Dimensions create filters
+- Metadata source creates a citation/source panel
+- Missing metadata creates a warning or prompt
+- Entity tags create entity selectors
+- Indicator tags create measure selectors
+- Dimension tags create filter controls
+- Unit tags improve chart labels and explanations
+
+
+4. Visualization Layer
+----------------------
+Responsible for presenting selected data as charts, tables, and summary views.
+
+Main Components:
+- Line Chart
+- Bar Chart
+- Ranking Table
+- Summary Cards
+- Data Preview Table
+- Data Quality Panel
+
+Responsibilities:
+- Render chart views from chart configuration
+- Update visualizations when filters change
+- Show latest values
+- Show rankings
+- Show comparisons
+- Show missing-data or empty-state messages
+- Keep chart interactions simple and understandable
+
+Initial Chart Types:
+- Line chart for time series
+- Bar chart for category comparison
+- Ranking table for latest values
+- Summary cards for key metrics
+
+Later Chart Types:
+- Map view
+- Scatter plot
+- Heatmap
+- Small multiples
+- Distribution chart
+
+
+5. Analysis Layer
+-----------------
+Responsible for deterministic data analysis before any LLM reasoning happens.
+
+Main Components:
+- Trend Analysis Engine
+- Ranking Engine
+- Change Calculation Engine
+- Anomaly Detection Engine
+- Pattern Discovery Engine
+- Pattern Scoring Engine
+- Pattern Evidence Builder
+- Statistical Method Recommender
+- Hypothesis Testing Engine
+- ANOVA Engine
+- Time-Series Modeling Engine
+- Prediction Engine
+- Data Quality Engine
+- Insight Generator
+
+Responsibilities:
+- Detect increasing, decreasing, flat, or volatile trends
+- Calculate absolute change
+- Calculate percentage change
+- Calculate year-over-year change
+- Detect unusual jumps and drops
+- Detect missing values
+- Detect missing years
+- Detect duplicate rows
+- Detect inconsistent categories
+- Discover important patterns across time, geography, entities, and dimensions
+- Detect gaps, convergence, divergence, breakpoints, volatility, ranking changes, and group differences
+- Produce pattern confidence and importance scores
+- Produce explainable evidence for each pattern
+- Recommend suitable statistical tests or models
+- Run basic hypothesis tests, ANOVA, correlation, regression, and time-series baselines
+- Generate forecasts with uncertainty and caveats
+- Produce insight cards
+- Produce structured facts for the agent
+
+Important Design Rule:
+The analysis engine produces grounded facts. The agent uses these facts to explain the data, but should not invent numbers.
+
+
+5.5. Agentic Explainable AI Pattern Layer
+-----------------------------------------
+Responsible for turning deterministic pattern results into explainable, inspectable, agent-ready findings.
+
+Main Components:
+- Pattern Result Store
+- Pattern Evidence Store
+- Pattern Explanation Builder
+- Pattern Importance Ranker
+- Pattern Confidence Calculator
+- Pattern Detail UI
+- Pattern Follow-Up Recommender
+
+Pattern Types:
+- Trend pattern
+- Change-point pattern
+- Outlier pattern
+- Gap pattern
+- Convergence pattern
+- Divergence pattern
+- Ranking-change pattern
+- Volatility pattern
+- Data quality pattern
+- Relationship pattern
+
+Responsibilities:
+- Rank discovered patterns by analytical usefulness
+- Separate confidence from importance
+- Explain why a pattern was detected
+- Show the evidence values behind the pattern
+- Show affected countries, regions, groups, or time ranges
+- Attach caveats when data quality is weak
+- Recommend next charts and next questions
+- Feed pattern results into the agent context
+
+Explainability Requirements:
+- Every pattern must have evidence
+- Every explanation must reference computed facts
+- Missing data must reduce confidence
+- The agent must distinguish observation from interpretation
+- The user must be able to inspect why a pattern was detected
+
+
+5.6. Statistical Modeling And Prediction Layer
+----------------------------------------------
+Responsible for basic statistical pattern recognition, hypothesis testing, time-series analysis, and baseline prediction.
+
+Main Components:
+- Descriptive Statistics Engine
+- Statistical Method Recommender
+- Hypothesis Testing Engine
+- ANOVA Engine
+- Correlation Engine
+- Regression Baseline Engine
+- Time-Series Analysis Engine
+- Forecasting Engine
+- Statistical Assumption Checker
+- Statistical Explanation Builder
+
+Supported Capabilities:
+- Mean, median, min, max, variance, standard deviation
+- Group comparison
+- t-test baseline
+- ANOVA baseline
+- chi-square test where appropriate
+- Pearson and Spearman correlation where appropriate
+- Simple linear regression
+- Moving average forecast
+- Exponential smoothing forecast
+- Linear trend forecast
+- Confidence intervals where feasible
+- Prediction intervals where feasible
+
+Method Recommendation Rules:
+- One numeric measure by category: group comparison or ANOVA
+- Two numeric measures: correlation or regression
+- Numeric measure over time: time-series trend analysis
+- Multiple groups over time: trend comparison
+- Categorical outcome by category: chi-square test
+- Small or missing-heavy data: warning before modeling
+
+Responsibilities:
+- Recommend a statistical method based on schema, ontology, and selected data
+- Run reproducible baseline statistical tests
+- Check assumptions where possible
+- Explain method choice
+- Explain p-values, effect size, confidence, and uncertainty in plain language
+- Separate statistical significance from practical importance
+- Avoid causal claims unless the data design supports causality
+- Feed statistical results into the agent context and report generator
+
+
+6. Agent Layer
+--------------
+Responsible for natural-language explanations, question answering, guided analysis, and report support.
+
+Main Components:
+- Agent Chat UI
+- Question Classifier
+- Agent Context Builder
+- Rule-Based Agent
+- LLM Agent
+- Response Validator
+- Suggested Question Generator
+- Ontology Explanation Agent
+- Interface Explanation Agent
+- Pattern Explanation Agent
+- Statistical Explanation Agent
+
+Responsibilities:
+- Understand user questions about selected data
+- Understand user questions about dataset meaning and interface generation
+- Build a structured context payload
+- Use schema, metadata, ontology, semantic tags, selected filters, analysis results, and chart configuration
+- Use validated expert knowledge graph context when relevant
+- Answer using available data only
+- Explain patterns in simple language
+- Explain why a pattern was detected
+- Explain pattern evidence, confidence, importance, and caveats
+- Explain hypothesis tests, ANOVA, time-series results, predictions, assumptions, and uncertainty
+- Explain entities, indicators, dimensions, and relationships
+- Explain expert-provided knowledge with provenance
+- Explain why filters, charts, and insights were generated
+- Compare selected countries or categories
+- Highlight caveats and data quality issues
+- Recommend next charts or next questions
+- Fall back to rule-based responses if the LLM is unavailable
+
+Agent Context Should Include:
+- Dataset name
+- Dataset description
+- Source and citation metadata
+- Selected measure
+- Selected dimensions
+- Ontology summary
+- Semantic tags
+- UI generation reasons
+- Pattern summary
+- Pattern evidence
+- Statistical model summary
+- Forecast summary
+- Knowledge graph summary
+- Expert claim provenance
+- Selected filters
+- Current chart type
+- Filtered data summary
+- Key computed insights
+- Data quality warnings
+- Relevant rows or aggregated values
+
+Agent Guardrails:
+- Do not invent values
+- Do not cite data that is not in the selected dataset
+- Mention missing data when it affects the answer
+- Prefer computed analysis output over guessing
+- Separate data-grounded findings from general interpretation
+- Give short, understandable answers by default
+
+
+7. Report Layer
+---------------
+Responsible for creating reusable narrative outputs from dashboard state and agent analysis.
+
+Main Components:
+- Report Generator
+- Report Preview
+- Markdown Export
+- Saved Report State
+
+Responsibilities:
+- Generate a report from the current dataset and filters
+- Include key trends
+- Include comparisons
+- Include data quality caveats
+- Include source metadata
+- Include suggested next analysis
+- Export report as Markdown first
+
+Later Export Options:
+- PDF
+- Word document
+- Shareable link
+- Dashboard snapshot
+
+
+8. Persistence Layer
+--------------------
+Responsible for storing datasets, metadata, UI state, and reports.
+
+Phase 1:
+- Browser local storage
+- Local mock data files
+
+Phase 2:
+- Server-side database
+- User accounts
+- Saved workspaces
+
+Data To Persist:
+- Imported datasets
+- Confirmed schema
+- Metadata edits
+- Last selected filters
+- Saved reports
+- User-created dataset notes
+
+
+9. Integration Layer
+--------------------
+Responsible for external systems and future data sources.
+
+Initial Integrations:
+- Local CSV upload
+- Local JSON upload
+- GitHub repository for implementation workflow
+- Markdown sprint tracker files
+
+Future Integrations:
+- Our World in Data style CSV URLs
+- World Bank API
+- UN Data APIs
+- National statistics APIs
+- Scheduled dataset refresh
+- OpenAI API for LLM explanations
+- GitHub MCP/app workflow for commits, pull requests, and reviews
+- Jira MCP for sprint and task management
+
+
+10. Delivery And Project Management Layer
+-----------------------------------------
+Responsible for making implementation progress visible and reviewable.
+
+Main Components:
+- Codex Workspace Context
+- Git Repository
+- GitHub Authentication
+- GitHub MCP/App Integration
+- Pull Request Workflow
+- Review Checklist
+- Jira MCP Integration
+- Markdown Sprint Tracker Fallback
+
+Responsibilities:
+- Keep product plans, architecture, sprint progress, and review notes in the repository
+- Let Codex implement on feature branches
+- Commit code in small reviewable increments
+- Open or prepare pull requests at the end of each sprint
+- Track task status in Jira when available
+- Track task status in markdown files when Jira is not available
+- Keep completed, in-progress, and blocked work visible to the user
+
+Fallback Tracking Files:
+- sprint-progress.md
+- sprint-backlog.md
+- sprint-review-notes.md
+
+Progress Statuses:
+- Not Started
+- In Progress
+- Blocked
+- Done
+
+
+High-Level Data Flow
+====================
+
+Step 1: Import
+--------------
+User imports CSV or JSON.
+
+Step 2: Parse
+-------------
+Parser converts the file into normalized rows and columns.
+
+Step 3: Infer Schema
+--------------------
+Schema inference engine detects column types and roles.
+
+Step 4: Confirm Metadata
+------------------------
+User confirms or edits labels, units, descriptions, and source details.
+
+Step 5: Discover Ontology
+-------------------------
+Ontology discovery engine identifies entities, indicators, dimensions, units, and relationships. User can approve or correct semantic tags.
+
+Step 6: Store Dataset
+---------------------
+Dataset rows, schema, metadata, ontology, and semantic tags are stored together.
+
+Step 7: Generate UI
+-------------------
+Dynamic UI generator creates filters, measure selectors, chart options, and default dashboard layout.
+
+Step 8: Analyze
+---------------
+Analysis engine calculates trends, rankings, anomalies, and data quality issues.
+
+Step 9: Visualize
+-----------------
+Charts, tables, and insight cards render from selected filters and measures.
+
+Step 10: Explain
+---------------
+Agent context builder sends structured facts to the rule-based or LLM agent.
+
+Step 11: Report
+---------------
+Report generator creates a narrative summary from the selected dashboard state.
+
+
+Logical Diagram
+===============
+
+Imported Dataset
+    -> Parser
+    -> Schema Inference Engine
+    -> Metadata Confirmation
+    -> Ontology Discovery And Semantic Tagging
+    -> Dataset Store
+    -> Dynamic UI Generator
+    -> Dashboard, Filters, Charts
+    -> Analysis Engine
+    -> Insight Cards
+    -> Agent Context Builder
+    -> Agent Explanation Panel
+    -> Report Generator
+    -> Export
+
+
+Recommended Frontend Module Structure
+=====================================
+
+src/
+  app/
+    App.tsx
+    routes/
+
+  data/
+    mock/
+    parsers/
+    storage/
+    types.ts
+
+  schema/
+    inferSchema.ts
+    columnRoles.ts
+    validateSchema.ts
+    metadata.ts
+
+  ontology/
+    discoverOntology.ts
+    semanticTags.ts
+    conceptRegistry.ts
+    detectRelationships.ts
+    explainUiGeneration.ts
+
+  ui-generation/
+    generateFilters.ts
+    generateChartOptions.ts
+    generateDashboard.ts
+
+  analysis/
+    trends.ts
+    rankings.ts
+    changes.ts
+    anomalies.ts
+    patterns.ts
+    patternScoring.ts
+    patternEvidence.ts
+    statistics.ts
+    hypothesisTests.ts
+    anova.ts
+    timeSeries.ts
+    forecasting.ts
+    dataQuality.ts
+    insights.ts
+
+  charts/
+    LineChartView.tsx
+    BarChartView.tsx
+    RankingTable.tsx
+    SummaryCards.tsx
+
+  agent/
+    AgentPanel.tsx
+    buildAgentContext.ts
+    ruleBasedAgent.ts
+    llmAgent.ts
+    validateAgentResponse.ts
+    suggestedQuestions.ts
+
+  reports/
+    generateReport.ts
+    ReportView.tsx
+    exportMarkdown.ts
+
+  components/
+    Layout.tsx
+    Sidebar.tsx
+    DatasetImporter.tsx
+    MetadataEditor.tsx
+    DataPreview.tsx
+
+  tests/
+    fixtures/
+
+
+Initial Data Model
+==================
+
+Dataset
+-------
+- id
+- name
+- description
+- rows
+- schema
+- metadata
+- createdAt
+- updatedAt
+
+DatasetSchema
+-------------
+- columns
+- timeColumn
+- geographyColumn
+- measures
+- dimensions
+- ignoredColumns
+
+ColumnSchema
+------------
+- name
+- label
+- detectedType
+- role
+- unit
+- confidence
+- nullable
+- exampleValues
+
+DatasetMetadata
+---------------
+- title
+- description
+- sourceName
+- sourceUrl
+- license
+- updateFrequency
+- dateRange
+- notes
+
+OntologyModel
+-------------
+- entities
+- indicators
+- dimensions
+- timeConcepts
+- geographyConcepts
+- units
+- relationships
+- semanticTags
+- assumptions
+- confidenceScores
+
+KnowledgeGraph
+--------------
+- entities
+- relationships
+- claims
+- evidenceArtifacts
+- provenanceRecords
+- validationStatus
+
+ExpertClaim
+-----------
+- id
+- text
+- linkedEntities
+- linkedIndicators
+- evidenceArtifacts
+- sourceExpert
+- confidence
+- validationStatus
+- createdAt
+
+EvidenceArtifact
+----------------
+- id
+- type
+- title
+- description
+- source
+- fileReference
+- linkedClaims
+- createdAt
+
+ProvenanceRecord
+----------------
+- sourceType
+- sourceName
+- capturedAt
+- capturedBy
+- confidence
+- notes
+
+SemanticTag
+-----------
+- columnName
+- tag
+- conceptType
+- confidence
+- reason
+- approvedByUser
+
+ChartConfig
+-----------
+- chartType
+- measure
+- xField
+- yField
+- groupBy
+- filters
+- yearRange
+
+AnalysisResult
+--------------
+- trends
+- rankings
+- changes
+- anomalies
+- patterns
+- dataQualityIssues
+- generatedInsights
+
+PatternResult
+-------------
+- id
+- type
+- title
+- explanation
+- whyItMatters
+- affectedEntities
+- affectedDimensions
+- timeRange
+- evidence
+- confidenceScore
+- importanceScore
+- caveats
+- recommendedNextView
+
+PatternEvidence
+---------------
+- metricName
+- comparisonType
+- startValue
+- endValue
+- absoluteChange
+- percentChange
+- groupValues
+- supportingRows
+- dataQualityWarnings
+
+StatisticalModelResult
+----------------------
+- id
+- question
+- recommendedMethod
+- methodUsed
+- resultSummary
+- statistic
+- pValue
+- effectSize
+- confidenceInterval
+- predictionInterval
+- assumptionsChecked
+- caveats
+- interpretation
+- practicalImportance
+
+ForecastResult
+--------------
+- method
+- forecastHorizon
+- predictedValues
+- predictionIntervals
+- baselineError
+- assumptions
+- caveats
+
+AgentContext
+------------
+- datasetSummary
+- schemaSummary
+- metadataSummary
+- ontologySummary
+- semanticTagSummary
+- uiGenerationReasons
+- patternSummary
+- patternEvidence
+- statisticalModelSummary
+- forecastSummary
+- selectedChart
+- selectedFilters
+- selectedMeasure
+- computedInsights
+- dataQualityWarnings
+- relevantDataSummary
+
+
+Testing Architecture
+====================
+
+Unit Tests
+----------
+- CSV parser
+- JSON parser
+- Schema inference
+- Column role detection
+- Ontology discovery
+- Semantic tagging
+- Expert knowledge graph enrichment
+- Expert claim extraction
+- Provenance tracking
+- Relationship detection
+- UI generation explanation
+- Filter generation
+- Chart option generation
+- Trend calculation
+- Pattern discovery
+- Pattern scoring
+- Pattern evidence generation
+- Statistical method recommendation
+- Hypothesis testing
+- ANOVA
+- Correlation
+- Time-series baseline
+- Forecasting baseline
+- Ranking calculation
+- Anomaly detection
+- Data quality checks
+- Agent context builder
+- Rule-based agent
+- Report generator
+
+UI Tests
+--------
+- Upload dataset
+- Preview rows
+- Confirm metadata
+- Confirm ontology tags
+- Edit knowledge graph
+- Approve or reject expert claims
+- Ask why a filter was generated
+- Generate filters
+- Change filters
+- Switch measures
+- Switch chart type
+- Ask agent question
+- Inspect pattern evidence
+- Inspect statistical model result
+- Generate report
+
+Manual Demo Tests
+-----------------
+- Load mock poverty dataset
+- Confirm detected schema
+- Explore dashboard
+- Compare countries
+- Generate insight cards
+- Ask agent for explanation
+- Generate report
+- Test invalid dataset
+- Test missing values dataset
+
+
+Security And Reliability Notes
+==============================
+
+Data Safety
+-----------
+- Treat uploaded datasets as user-provided input
+- Do not execute uploaded content
+- Validate file type and size
+- Show clear errors for invalid files
+
+Agent Safety
+------------
+- Do not let the agent invent dataset facts
+- Keep structured computed facts separate from natural-language explanation
+- Show caveats when data is incomplete
+- Keep source and metadata visible
+- Keep pattern observations separate from interpretations
+- Require evidence for pattern explanations
+- Explain statistical assumptions and uncertainty
+- Avoid causal claims unless the dataset supports them
+
+Reliability
+-----------
+- Rule-based analysis should work without LLM access
+- Charts should handle missing or empty data
+- Schema detection should allow user correction
+- Metadata should be editable
+- App should fail gracefully on unsupported datasets
+
+
+MVP Architecture Scope
+======================
+
+Included In MVP
+---------------
+- Local CSV/JSON import
+- Mock poverty dataset
+- Schema inference
+- Ontology discovery
+- Semantic tagging
+- Expert-guided knowledge graph enrichment
+- Explainable interface generation
+- Metadata confirmation
+- Dynamic filters
+- Dynamic chart generation
+- Line chart
+- Bar chart
+- Ranking table
+- Summary cards
+- Trend analysis
+- Pattern discovery
+- Explainable AI pattern cards
+- Statistical modeling
+- Hypothesis testing
+- Basic prediction
+- Data quality checks
+- Rule-based agent
+- Report generation
+- Markdown export
+
+Not Included In MVP
+-------------------
+- User accounts
+- Server database
+- Real-time collaboration
+- Scheduled refresh
+- PDF export
+- Map visualizations
+- External API ingestion
+- Full multi-agent workflow
+
+
+Future Architecture Direction
+=============================
+
+Phase 1: Local MVP
+------------------
+- Browser-based app
+- Local mock data
+- Local CSV/JSON upload
+- Local storage
+- Rule-based agent
+
+Phase 2: LLM-Backed Prototype
+-----------------------------
+- OpenAI API integration
+- Structured agent context
+- LLM responses with validation
+- Better reports
+- Saved workspaces
+
+Phase 3: Data Platform
+----------------------
+- Server database
+- User accounts
+- Dataset library
+- External data source integrations
+- Scheduled refresh
+- Shareable dashboards
+
+Phase 4: Advanced Analytics
+---------------------------
+- Map visualizations
+- Forecasting
+- Correlation analysis
+- Multi-dataset comparison
+- Policy brief generation
+- Collaborative review
+
+
+Key Technical Risks
+===================
+
+Risk 1: Schema Detection Is Incorrect
+-------------------------------------
+Mitigation:
+- Use confidence scores
+- Provide metadata confirmation UI
+- Allow users to edit column roles
+
+Risk 2: Agent Invents Data
+--------------------------
+Mitigation:
+- Use structured analysis results
+- Add response guardrails
+- Validate responses where possible
+- Show data caveats
+
+Risk 3: Ontology Tags Are Wrong
+-------------------------------
+Mitigation:
+- Use confidence scores
+- Explain tagging reasons
+- Add ontology confirmation UI
+- Allow users to approve or correct tags
+
+Risk 4: Generic UI Becomes Confusing
+------------------------------------
+Mitigation:
+- Start with poverty tracking
+- Use simple chart recommendations
+- Keep generated controls predictable
+- Add good empty states
+- Explain why UI elements were generated
+
+Risk 5: Pattern Explanations Are Overstated
+-------------------------------------------
+Mitigation:
+- Separate confidence from importance
+- Show evidence values
+- Show data quality caveats
+- Label interpretation separately from observation
+- Avoid causal claims unless the dataset supports them
+
+Risk 6: Statistical Results Are Misinterpreted
+----------------------------------------------
+Mitigation:
+- Explain assumptions in plain language
+- Separate p-value, effect size, and practical importance
+- Show uncertainty for predictions
+- Warn on small samples and missing data
+- Avoid causal wording by default
+
+Risk 7: Datasets Have Messy Formats
+-----------------------------------
+Mitigation:
+- Start with clean CSV/JSON
+- Add validation and preview
+- Add metadata editor
+- Expand import support gradually
+
+Risk 8: Large Datasets Slow Down Browser
+----------------------------------------
+Mitigation:
+- Limit MVP dataset size
+- Add row limits and warnings
+- Add aggregation later
+- Move processing server-side later
+
+
+Architecture Success Criteria
+=============================
+
+The architecture is successful if:
+- A poverty dataset can generate a useful dashboard automatically
+- A different dataset can generate a different dashboard without custom page code
+- Users can correct schema and metadata
+- Users can understand and correct ontology tags
+- Users can ask why the interface was generated in a certain way
+- Users can discover important patterns with evidence
+- Users can inspect confidence, importance, and caveats for patterns
+- Users can run basic statistical tests with assumptions and uncertainty
+- Users can generate baseline predictions with caveats
+- Charts update from filters and measures
+- Analysis results are deterministic and testable
+- Agent answers are grounded in computed facts
+- Reports can be generated from current dashboard state
+- Each sprint produces a working demo

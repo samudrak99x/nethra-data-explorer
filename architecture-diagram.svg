@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Nethra Data Explorer Architecture Diagram</title>
+  <desc id="desc">Layered architecture diagram for a dynamic agentic data exploration product driven by imported datasets, schema, metadata, analytics, and agent explanations.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f8fb; }
+      .title { font: 700 34px Arial, sans-serif; fill: #162033; }
+      .subtitle { font: 400 17px Arial, sans-serif; fill: #536074; }
+      .layer-title { font: 700 20px Arial, sans-serif; fill: #122033; }
+      .layer-note { font: 400 13px Arial, sans-serif; fill: #5f6d7f; }
+      .box-title { font: 700 16px Arial, sans-serif; fill: #152235; }
+      .box-text { font: 400 12px Arial, sans-serif; fill: #586578; }
+      .small { font: 400 11px Arial, sans-serif; fill: #697688; }
+      .pill-text { font: 700 12px Arial, sans-serif; fill: #243044; }
+      .layer { stroke-width: 1.5; rx: 18; }
+      .box { fill: #ffffff; stroke: #cad2df; stroke-width: 1.3; rx: 10; filter: url(#shadow); }
+      .box-blue { stroke: #6d8fd9; }
+      .box-green { stroke: #54a174; }
+      .box-orange { stroke: #d99142; }
+      .box-purple { stroke: #9a7bd1; }
+      .box-red { stroke: #cf6e74; }
+      .arrow { fill: none; stroke: #607086; stroke-width: 2.2; marker-end: url(#arrowhead); }
+      .arrow-soft { fill: none; stroke: #9aa7b8; stroke-width: 1.8; marker-end: url(#arrowhead-soft); }
+      .agent-arrow { fill: none; stroke: #7d58c2; stroke-width: 2.4; marker-end: url(#arrowhead-agent); stroke-dasharray: 8 6; }
+      .data-arrow { fill: none; stroke: #2f7f62; stroke-width: 2.4; marker-end: url(#arrowhead-data); }
+    </style>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#1b2a41" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="12" markerHeight="9" refX="10" refY="4.5" orient="auto">
+      <path d="M0,0 L11,4.5 L0,9 Z" fill="#607086"/>
+    </marker>
+    <marker id="arrowhead-soft" markerWidth="12" markerHeight="9" refX="10" refY="4.5" orient="auto">
+      <path d="M0,0 L11,4.5 L0,9 Z" fill="#9aa7b8"/>
+    </marker>
+    <marker id="arrowhead-agent" markerWidth="12" markerHeight="9" refX="10" refY="4.5" orient="auto">
+      <path d="M0,0 L11,4.5 L0,9 Z" fill="#7d58c2"/>
+    </marker>
+    <marker id="arrowhead-data" markerWidth="12" markerHeight="9" refX="10" refY="4.5" orient="auto">
+      <path d="M0,0 L11,4.5 L0,9 Z" fill="#2f7f62"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1100"/>
+
+  <text class="title" x="70" y="62">Nethra Data Explorer Architecture</text>
+  <text class="subtitle" x="70" y="92">Dynamic analytics app where imported data, schema, and metadata generate the interface, charts, insights, agent explanations, and reports.</text>
+
+  <rect x="70" y="118" width="1460" height="108" rx="18" fill="#eaf1ff" stroke="#b9caef" stroke-width="1.5"/>
+  <text class="layer-title" x="100" y="150">External Inputs And Users</text>
+  <text class="layer-note" x="100" y="174">Files, future APIs, and users enter through controlled import and confirmation flows.</text>
+  <rect class="box box-blue" x="410" y="142" width="190" height="58"/>
+  <text class="box-title" x="432" y="166">CSV / JSON Files</text>
+  <text class="box-text" x="432" y="185">poverty datasets first</text>
+  <rect class="box box-blue" x="635" y="142" width="190" height="58"/>
+  <text class="box-title" x="665" y="166">Future APIs</text>
+  <text class="box-text" x="665" y="185">OWID, World Bank, UN</text>
+  <rect class="box box-blue" x="860" y="142" width="190" height="58"/>
+  <text class="box-title" x="894" y="166">Analyst User</text>
+  <text class="box-text" x="894" y="185">imports and explores</text>
+
+  <rect x="70" y="252" width="1460" height="128" rx="18" fill="#edf8f1" stroke="#b9dbc4" stroke-width="1.5"/>
+  <text class="layer-title" x="100" y="286">Data Layer</text>
+  <text class="layer-note" x="100" y="310">Stores raw rows, normalized rows, confirmed schema, metadata, and saved datasets.</text>
+  <rect class="box box-green" x="310" y="280" width="170" height="66"/>
+  <text class="box-title" x="342" y="305">Parser</text>
+  <text class="box-text" x="333" y="325">normalize rows</text>
+  <rect class="box box-green" x="515" y="280" width="190" height="66"/>
+  <text class="box-title" x="548" y="305">Dataset Store</text>
+  <text class="box-text" x="548" y="325">raw + cleaned data</text>
+  <rect class="box box-green" x="740" y="280" width="190" height="66"/>
+  <text class="box-title" x="766" y="305">Schema Store</text>
+  <text class="box-text" x="766" y="325">columns and roles</text>
+  <rect class="box box-green" x="965" y="280" width="190" height="66"/>
+  <text class="box-title" x="990" y="305">Metadata Store</text>
+  <text class="box-text" x="990" y="325">units, source, notes</text>
+  <rect class="box box-green" x="1190" y="280" width="190" height="66"/>
+  <text class="box-title" x="1215" y="305">Dataset Library</text>
+  <text class="box-text" x="1215" y="325">saved workspaces</text>
+
+  <rect x="70" y="406" width="1460" height="164" rx="18" fill="#fff4e6" stroke="#e5c28f" stroke-width="1.5"/>
+  <text class="layer-title" x="100" y="440">Schema, Ontology And Intelligence Layer</text>
+  <text class="layer-note" x="100" y="464">Understands dataset structure and meaning, tags concepts, checks quality, computes facts, and prepares grounded context.</text>
+  <rect class="box box-orange" x="260" y="458" width="190" height="72"/>
+  <text class="box-title" x="288" y="483">Schema Inference</text>
+  <text class="box-text" x="288" y="503">time, geo, measures</text>
+  <rect class="box box-orange" x="485" y="458" width="190" height="72"/>
+  <text class="box-title" x="507" y="483">Ontology Tags</text>
+  <text class="box-text" x="507" y="503">entities + indicators</text>
+  <rect class="box box-orange" x="710" y="458" width="190" height="72"/>
+  <text class="box-title" x="746" y="483">Data Quality</text>
+  <text class="box-text" x="746" y="503">missing, gaps, dupes</text>
+  <rect class="box box-orange" x="935" y="458" width="190" height="72"/>
+  <text class="box-title" x="958" y="483">Pattern Discovery</text>
+  <text class="box-text" x="958" y="503">trends, gaps, shifts</text>
+  <rect class="box box-orange" x="1160" y="458" width="210" height="72"/>
+  <text class="box-title" x="1190" y="483">Stats + XAI</text>
+  <text class="box-text" x="1190" y="503">tests, forecasts, evidence</text>
+
+  <rect x="70" y="596" width="1460" height="142" rx="18" fill="#f0ebfb" stroke="#c8b8e8" stroke-width="1.5"/>
+  <text class="layer-title" x="100" y="630">Dynamic Application Layer</text>
+  <text class="layer-note" x="100" y="654">Converts schema, metadata, and ontology tags into explainable filters, chart configs, dashboards, and reports.</text>
+  <rect class="box box-purple" x="285" y="646" width="210" height="64"/>
+  <text class="box-title" x="318" y="671">Dynamic UI Generator</text>
+  <text class="box-text" x="318" y="690">filters and controls</text>
+  <rect class="box box-purple" x="535" y="646" width="210" height="64"/>
+  <text class="box-title" x="568" y="671">Chart Config Engine</text>
+  <text class="box-text" x="568" y="690">line, bar, ranking</text>
+  <rect class="box box-purple" x="785" y="646" width="210" height="64"/>
+  <text class="box-title" x="818" y="671">Query / Filter Engine</text>
+  <text class="box-text" x="818" y="690">selected data slices</text>
+  <rect class="box box-purple" x="1035" y="646" width="210" height="64"/>
+  <text class="box-title" x="1068" y="671">Report Generator</text>
+  <text class="box-text" x="1068" y="690">narrative outputs</text>
+
+  <rect x="70" y="764" width="1460" height="148" rx="18" fill="#eef6f9" stroke="#abcdd9" stroke-width="1.5"/>
+  <text class="layer-title" x="100" y="798">Presentation Layer</text>
+  <text class="layer-note" x="100" y="822">User-facing screens generated from current dataset, chart state, analysis results, and agent answers.</text>
+  <rect class="box" x="200" y="812" width="165" height="64"/>
+  <text class="box-title" x="224" y="837">Import UI</text>
+  <text class="box-text" x="224" y="856">upload + preview</text>
+  <rect class="box" x="395" y="812" width="165" height="64"/>
+  <text class="box-title" x="419" y="837">Metadata UI</text>
+  <text class="box-text" x="419" y="856">confirm schema</text>
+  <rect class="box" x="590" y="812" width="165" height="64"/>
+  <text class="box-title" x="615" y="837">Dashboard</text>
+  <text class="box-text" x="615" y="856">filters + cards</text>
+  <rect class="box" x="785" y="812" width="165" height="64"/>
+  <text class="box-title" x="812" y="837">Chart Views</text>
+  <text class="box-text" x="812" y="856">visual analysis</text>
+  <rect class="box" x="980" y="812" width="165" height="64"/>
+  <text class="box-title" x="1002" y="837">Agent + XAI</text>
+  <text class="box-text" x="1002" y="856">ask, explain, inspect</text>
+  <rect class="box" x="1175" y="812" width="165" height="64"/>
+  <text class="box-title" x="1204" y="837">Report View</text>
+  <text class="box-text" x="1204" y="856">export summary</text>
+
+  <rect x="70" y="938" width="1460" height="96" rx="18" fill="#fff0f1" stroke="#e5b2b8" stroke-width="1.5"/>
+  <text class="layer-title" x="100" y="972">Agent Guardrails And Outputs</text>
+  <text class="layer-note" x="100" y="996">The agent explains patterns, statistical tests, predictions, ontology, UI choices, missing data, and uncertainty without inventing values.</text>
+  <rect x="675" y="962" width="250" height="44" rx="22" fill="#ffffff" stroke="#cf6e74" stroke-width="1.4"/>
+  <text class="pill-text" x="696" y="989">Grounded + explainable answers</text>
+
+  <path class="data-arrow" d="M505 200 C505 228, 395 238, 395 276"/>
+  <path class="data-arrow" d="M730 200 C730 230, 610 238, 610 276"/>
+  <path class="arrow" d="M955 200 C955 235, 1060 242, 1060 276"/>
+  <path class="arrow" d="M480 313 L510 313"/>
+  <path class="arrow" d="M705 313 L735 313"/>
+  <path class="arrow" d="M930 313 L960 313"/>
+  <path class="arrow" d="M1155 313 L1185 313"/>
+
+  <path class="arrow" d="M835 346 C835 386, 355 398, 355 454"/>
+  <path class="arrow" d="M835 346 C835 386, 580 398, 580 454"/>
+  <path class="arrow" d="M835 346 C835 386, 805 398, 805 454"/>
+  <path class="arrow" d="M835 346 C835 386, 1030 398, 1030 454"/>
+  <path class="arrow" d="M1030 530 L1148 530"/>
+  <path class="arrow" d="M1265 530 C1265 574, 1140 590, 1140 642"/>
+
+  <path class="arrow" d="M580 530 C580 590, 390 590, 390 642"/>
+  <path class="arrow" d="M805 530 C805 592, 640 592, 640 642"/>
+  <path class="arrow" d="M1030 530 C1030 592, 890 592, 890 642"/>
+  <path class="agent-arrow" d="M1265 530 C1345 570, 1220 740, 1062 808"/>
+
+  <path class="arrow" d="M390 710 C390 760, 672 760, 672 808"/>
+  <path class="arrow" d="M640 710 C640 760, 867 760, 867 808"/>
+  <path class="arrow" d="M890 710 C890 760, 867 760, 867 808"/>
+  <path class="arrow" d="M1140 710 C1140 762, 1257 762, 1257 808"/>
+
+  <path class="agent-arrow" d="M867 876 C867 910, 1040 910, 1062 876"/>
+  <path class="agent-arrow" d="M1062 876 C1062 918, 810 922, 800 958"/>
+  <path class="arrow-soft" d="M1257 876 C1257 912, 925 922, 880 958"/>
+
+  <text class="small" x="1190" y="1060">MVP starts local: CSV/JSON, browser storage, deterministic analysis, rule-based agent. Later: OpenAI API, database, external APIs, maps, and collaboration.</text>
+</svg>
