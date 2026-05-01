@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <rect width="1400" height="800" fill="#ffffff"/>
+  <rect x="70" y="70" width="1260" height="660" rx="28" fill="#f7fbfb" stroke="#16697a" stroke-width="4"/>
+  <text x="700" y="135" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="#0b3d4a">Architecture Bolt</text>
+  <text x="700" y="185" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle" fill="#56707a">Create the technical base before feature work starts</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#0b3d4a">
+    <rect x="120" y="270" width="250" height="110" rx="18" fill="#dff3f7" stroke="#17a2b8" stroke-width="3"/><text x="245" y="323" text-anchor="middle">ADRs</text>
+    <rect x="400" y="270" width="250" height="110" rx="18" fill="#e8f6ea" stroke="#2aa198" stroke-width="3"/><text x="525" y="323" text-anchor="middle">Azure Mapping</text>
+    <rect x="680" y="270" width="250" height="110" rx="18" fill="#fff4e6" stroke="#e67e22" stroke-width="3"/><text x="805" y="323" text-anchor="middle">Docker Compose</text>
+    <rect x="960" y="270" width="250" height="110" rx="18" fill="#f2e8ff" stroke="#7f5af0" stroke-width="3"/><text x="1085" y="323" text-anchor="middle">Auth / AuthZ</text>
+    <rect x="260" y="440" width="360" height="120" rx="18" fill="#eef8ff" stroke="#2f80ed" stroke-width="3"/><text x="440" y="494" text-anchor="middle">Project Skeleton</text><text x="440" y="528" font-size="18" text-anchor="middle">frontend + backend + environment</text>
+    <rect x="680" y="440" width="360" height="120" rx="18" fill="#eefbf2" stroke="#27ae60" stroke-width="3"/><text x="860" y="494" text-anchor="middle">Deployment Baseline</text><text x="860" y="528" font-size="18" text-anchor="middle">health checks + startup + secrets</text>
+  </g>
+</svg>
