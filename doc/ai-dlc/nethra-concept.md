@@ -16,20 +16,26 @@ Users import a dataset, and the system:
 
 The first domain is poverty tracking, but the structure is designed for other domains without creating one custom page per dataset.
 
+## Concept Diagram
+
+![Nethra Logical Architecture](./logical-architecture.png)
+
 ## AI-DLC Operating Model
 
 ```mermaid
 flowchart TD
-    A[Intent Board] --> B[Elaboration Phase]
-    B --> C[Stage Board]
-    C --> D[Bolt Board]
-    D --> E[Validation Gates]
-    E --> F[Learning Layer]
-    E --> B
-    E --> D
+    A[Intent Section] --> B[Elaboration Phase]
+    B --> C[Implementation Section]
+    C --> D[Stage 1]
+    D --> E[Stage 2]
+    E --> F[Stage 3]
+    F --> G[Stage 4]
+    G --> H[Validation Gates]
+    H --> I[Learning Layer]
+    H --> B
 ```
 
-## Intent Structure
+## Intent Section
 
 - Product Intent
 - Business Intent
@@ -39,7 +45,7 @@ flowchart TD
 - Architecture Intent
 - Delivery Intent
 
-## MVP Stages
+## Implementation Section
 
 ### Stage 1: Data Onboard and Schema
 - Architecture Bolt
@@ -62,12 +68,36 @@ flowchart TD
 - Workspace Bolt
 - Delivery Bolt
 
+## Unit Elaboration Rule
+
+Units are produced during bolt elaboration.
+
+Each stage is an MVP slice. Each bolt inside a stage is broken into units to make implementation easier and more agent-friendly.
+
+## Bolt Structure
+
+- Architecture Bolt
+- Foundation Bolt
+- Import Bolt
+- Interface Bolt
+- Meaning Bolt
+- Knowledge Bolt
+- Visualization Bolt
+- Pattern Bolt
+- Explainability Bolt
+- Statistics Bolt
+- Conversation Bolt
+- Reasoning Bolt
+- Narrative Bolt
+- Workspace Bolt
+- Delivery Bolt
+
 ## MVP Execution Loop
 
-Intent -> Elaboration -> Stage Selection -> Bolt Decomposition -> Unit Elaboration -> Agent Execution -> Agent Testing -> Human Validation -> Commit / PR / Merge -> Learning Log -> Next Intent
+Intent Section -> Elaboration Phase -> Implementation Section -> Stage -> Bolt -> Unit -> Validation -> Learning
 
 ## Reference Assets
 
 - [Logical Architecture Image](./logical-architecture.png)
-- [AI-DLC Operating Model](./operating-model.md)
+- [AI-DLC Operating Model](./ai-dlc-operating-model.md)
 - [MVP Bolt Catalog](./mvp-bolts.md)
