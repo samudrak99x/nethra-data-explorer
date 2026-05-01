@@ -1,69 +1,89 @@
 ---
 name: repo-flow-manager
-description: Manage the full repository workflow across local git, GitHub MCP, and GitHub plugin. Use when the user wants branches, commits, pushes, pull requests, PR review, merge coordination, or a documented PR workflow, regardless of which GitHub tool path is available.
+description: Manage the end-to-end repository workflow for Codex using local git for branch creation and commits, the GitHub plugin for pull request and review work, and GitHub MCP for hosted GitHub gaps such as missing file or repo operations. Use when the user wants PR flow, branch flow, merge flow, or a single skill to coordinate repo actions.
 ---
 
 # Repo Flow Manager
 
-Use this skill to manage the end-to-end repository flow.
+Use this skill when the user wants the repository workflow handled end to end.
 
-## Goal
+## Tool choice
 
-Keep one consistent workflow across:
-- local git commands
-- GitHub MCP
-- GitHub plugin
+Use the simplest working path in this order:
 
-Choose the most reliable available path for the current task.
+1. Local `git` for branch creation, staging, committing, and pushing when the sandbox allows it.
+2. GitHub plugin for pull requests, reviews, comments, status checks, and merge operations.
+3. GitHub MCP for hosted GitHub actions that are better exposed there or when plugin coverage is missing.
 
-## Tool selection
+## Operating rule
 
-Prefer this order:
-1. Local git for branch, commit, fetch, merge, and push
-2. GitHub MCP for repo-aware inspection, PR/issue/CI intelligence, and GitHub-hosted automation
-3. GitHub plugin when it exposes the exact action needed or MCP is missing that capability
+Do not force one tool for every step.
+Pick the tool that is actually available for the step at hand.
 
-If a path is blocked, switch to the next available path rather than stopping.
+## Core flow
 
-## Workflow
+```text
+Check repo state
+  -> Create branch
+  -> Make changes
+  -> Stage / commit
+  -> Push branch
+  -> Open or update PR
+  -> Review / CI / comments
+  -> Resolve conflicts if needed
+  -> Merge
+  -> Confirm main
+```
 
-1. Check current branch and repo state
-2. Identify uncommitted changes
-3. Group changes into a focused branch
-4. Commit locally
-5. Push the branch
-6. Create or update the pull request
-7. Review status, comments, and checks
-8. Merge when approved
-9. Record the outcome in the repo docs if needed
+## What to use each tool for
 
-## Branching rules
+### Local git
+- branch creation
+- staging and committing
+- pushing changes
 
-- Use one branch per coherent work package
-- Keep the branch name short and descriptive
-- Prefer `phase-a/...` for ongoing planning work
+### GitHub plugin
+- fetch files and PRs
+- compare branches
+- inspect review comments and CI
+- create or update text files and commits when needed
+- merge pull requests
 
-## Pull request rules
+### GitHub MCP
+- hosted GitHub access
+- repo-aware AI operations
+- PR / issue / branch actions that the plugin surface does not expose cleanly
 
-- Keep PRs focused
-- Include a short summary of what changed
-- Note whether the change is docs, skills, visuals, or workflow
-- Call out anything intentionally left local or pending
+## Pull request workflow
 
-## PR workflow reference
+1. Create or choose a feature branch.
+2. Make the change set small and reviewable.
+3. Commit the work locally.
+4. Push the branch.
+5. Open or update the pull request.
+6. Review diff, comments, and CI.
+7. Resolve conflicts or failing checks.
+8. Merge when the PR is clean.
+9. Confirm `main` received the change.
 
-Read [pull-request-workflow.md](references/pull-request-workflow.md) when you need the exact PR sequence, checklist, or merge discipline.
+## Conflict workflow
 
-## Output style
+When a branch diverges:
 
-When using this skill, always report:
-- current branch
-- files changed
-- tool path used
-- PR state
-- merge status
+1. Compare branch to `main`.
+2. Identify the files that actually conflict.
+3. Restore or adjust the overlapping files.
+4. Rebase or rebuild the branch content.
+5. Recheck mergeability.
+6. Merge only when GitHub accepts it.
 
+## Rules
 
-## Visual reference
+- Prefer text-first GitHub plugin operations for PR work.
+- Use MCP when the GitHub plugin surface is missing the needed action.
+- Use local git for branch and commit mechanics whenever possible.
+- Keep the workflow visible to the user with the current branch, PR number, and merge status.
 
-- [Repo Flow Manager Diagram](assets/repo-flow-manager.png)
+## When to read the reference
+
+Read [references/pull-request-workflow.md](references/pull-request-workflow.md) when you need the exact PR lifecycle, tool mapping, or merge checklist.
