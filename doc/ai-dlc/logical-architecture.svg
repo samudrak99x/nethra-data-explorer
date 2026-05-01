@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#ffffff"/>
+  <rect x="60" y="60" width="1480" height="780" rx="30" fill="#fdfdfd" stroke="#1f2937" stroke-width="4"/>
+  <text x="800" y="130" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" text-anchor="middle" fill="#111827">Logical Architecture for Nethra Data Explorer</text>
+  <text x="800" y="178" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle" fill="#4b5563">MVP Stage model with Architecture included as the first bolt</text>
+
+  <g font-family="Arial, Helvetica, sans-serif" fill="#111827">
+    <rect x="100" y="250" width="220" height="120" rx="18" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+    <text x="210" y="305" font-size="26" text-anchor="middle">Intent Section</text>
+    <text x="210" y="338" font-size="18" text-anchor="middle">Product / Business / User</text>
+
+    <line x1="320" y1="310" x2="430" y2="310" stroke="#0284c7" stroke-width="6" marker-end="url(#arr)"/>
+
+    <rect x="430" y="230" width="270" height="160" rx="18" fill="#fff7ed" stroke="#f97316" stroke-width="3"/>
+    <text x="565" y="285" font-size="28" text-anchor="middle">Elaboration</text>
+    <text x="565" y="320" font-size="18" text-anchor="middle">shape intent into work</text>
+    <text x="565" y="348" font-size="18" text-anchor="middle">create units during bolt elaboration</text>
+
+    <line x1="700" y1="310" x2="820" y2="310" stroke="#f97316" stroke-width="6" marker-end="url(#arr)"/>
+
+    <rect x="820" y="210" width="660" height="200" rx="18" fill="#eefbf2" stroke="#16a34a" stroke-width="3"/>
+    <text x="1150" y="270" font-size="30" text-anchor="middle">Implementation Section</text>
+    <text x="1150" y="308" font-size="20" text-anchor="middle">Stage 1  Stage 2  Stage 3  Stage 4</text>
+    <text x="1150" y="342" font-size="18" text-anchor="middle">Each stage contains bolts, and each bolt is elaborated into units</text>
+
+    <rect x="140" y="500" width="280" height="120" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+    <text x="280" y="554" font-size="26" text-anchor="middle">Architecture Bolt</text>
+    <text x="280" y="588" font-size="18" text-anchor="middle">Azure + Docker + Auth</text>
+
+    <rect x="470" y="500" width="280" height="120" rx="18" fill="#fde2e4" stroke="#db2777" stroke-width="3"/>
+    <text x="610" y="554" font-size="26" text-anchor="middle">Import Bolt</text>
+    <text x="610" y="588" font-size="18" text-anchor="middle">CSV / JSON / schema</text>
+
+    <rect x="800" y="500" width="280" height="120" rx="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/>
+    <text x="940" y="554" font-size="26" text-anchor="middle">Visualization Bolt</text>
+    <text x="940" y="588" font-size="18" text-anchor="middle">filters / charts / views</text>
+
+    <rect x="1130" y="500" width="280" height="120" rx="18" fill="#d1fae5" stroke="#059669" stroke-width="3"/>
+    <text x="1270" y="554" font-size="26" text-anchor="middle">Delivery Bolt</text>
+    <text x="1270" y="588" font-size="18" text-anchor="middle">report / polish / demo</text>
+  </g>
+
+  <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#374151"/></marker></defs>
+</svg>
