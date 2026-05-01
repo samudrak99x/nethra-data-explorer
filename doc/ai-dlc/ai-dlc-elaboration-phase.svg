@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <rect width="1400" height="800" fill="#ffffff"/>
+  <rect x="70" y="70" width="1260" height="660" rx="28" fill="#fffdf7" stroke="#8b5e34" stroke-width="4"/>
+  <text x="700" y="135" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="#4a2c12">AI-DLC Elaboration Phase</text>
+  <text x="700" y="185" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle" fill="#6b5b4b">Intent becomes delivery-ready shape</text>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#4a2c12">
+    <rect x="120" y="280" width="260" height="120" rx="18" fill="#f2e8cf" stroke="#8b5e34" stroke-width="3"/>
+    <text x="250" y="330" font-size="28" text-anchor="middle">Intent</text><text x="250" y="362" font-size="20" text-anchor="middle">source meaning</text>
+    <line x1="380" y1="340" x2="500" y2="340" stroke="#8b5e34" stroke-width="6" marker-end="url(#arrow)"/>
+    <rect x="500" y="280" width="340" height="120" rx="18" fill="#fff4d6" stroke="#d69e2e" stroke-width="3"/>
+    <text x="670" y="330" font-size="28" text-anchor="middle">Elaboration</text><text x="670" y="362" font-size="20" text-anchor="middle">shape the work</text>
+    <line x1="840" y1="340" x2="960" y2="340" stroke="#8b5e34" stroke-width="6" marker-end="url(#arrow)"/>
+    <rect x="960" y="280" width="300" height="120" rx="18" fill="#f5efe6" stroke="#b08968" stroke-width="3"/>
+    <text x="1110" y="330" font-size="28" text-anchor="middle">Bolts</text><text x="1110" y="362" font-size="20" text-anchor="middle">execution packages</text>
+    <rect x="240" y="470" width="920" height="120" rx="18" fill="#faf5f0" stroke="#a17c57" stroke-width="3"/>
+    <text x="700" y="522" font-size="28" text-anchor="middle">Units are produced during bolt elaboration</text><text x="700" y="556" font-size="20" text-anchor="middle">small implementation steps are created only after a bolt is shaped</text>
+  </g>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#8b5e34"/></marker></defs>
+</svg>
