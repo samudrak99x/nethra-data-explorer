@@ -1,6 +1,6 @@
 # Nethra Data Explorer MVP Bolt Catalog
 
-This document captures the MVP structure for the first AI-DLC release path.
+This document captures the MVP stage structure for the first AI-DLC release path.
 
 ## MVP Structure
 
