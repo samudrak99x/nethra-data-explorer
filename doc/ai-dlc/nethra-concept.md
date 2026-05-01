@@ -18,7 +18,7 @@ The first domain is poverty tracking, but the structure is designed for other do
 
 ## Concept Diagram
 
-![Nethra Logical Architecture](./logical-architecture.png)
+![Nethra Logical Architecture](./logical-architecture.svg)
 
 ## AI-DLC Operating Model
 
@@ -98,6 +98,6 @@ Intent Section -> Elaboration Phase -> Implementation Section -> Stage -> Bolt -
 
 ## Reference Assets
 
-- [Logical Architecture Image](./logical-architecture.png)
+- [Logical Architecture Image](./logical-architecture.svg)
 - [AI-DLC Operating Model](./ai-dlc-operating-model.md)
 - [MVP Bolt Catalog](./mvp-bolts.md)
