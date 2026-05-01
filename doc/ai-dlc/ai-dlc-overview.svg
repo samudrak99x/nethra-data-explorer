@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <rect width="1400" height="800" fill="#ffffff"/>
+  <rect x="70" y="70" width="1260" height="660" rx="28" fill="#f8fbff" stroke="#1d4ed8" stroke-width="4"/>
+  <text x="700" y="135" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="#123a8c">Nethra AI-DLC Overview</text>
+  <text x="700" y="185" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle" fill="#4b5d8c">Intent -> Elaboration -> Stage -> Bolt -> Unit -> Validation -> Learning</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#123a8c">
+    <rect x="120" y="280" width="150" height="95" rx="18" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/><text x="195" y="333" text-anchor="middle">Intent</text>
+    <rect x="300" y="280" width="150" height="95" rx="18" fill="#ecfccb" stroke="#65a30d" stroke-width="3"/><text x="375" y="333" text-anchor="middle">Elaborate</text>
+    <rect x="480" y="280" width="150" height="95" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text x="555" y="333" text-anchor="middle">Stage</text>
+    <rect x="660" y="280" width="150" height="95" rx="18" fill="#fde2e4" stroke="#db2777" stroke-width="3"/><text x="735" y="333" text-anchor="middle">Bolt</text>
+    <rect x="840" y="280" width="150" height="95" rx="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text x="915" y="333" text-anchor="middle">Unit</text>
+    <rect x="1020" y="280" width="150" height="95" rx="18" fill="#d1fae5" stroke="#059669" stroke-width="3"/><text x="1095" y="333" text-anchor="middle">Validate</text>
+    <rect x="1200" y="280" width="90" height="95" rx="18" fill="#f1f5f9" stroke="#475569" stroke-width="3"/><text x="1245" y="333" text-anchor="middle">Learn</text>
+  </g>
+  <text x="700" y="520" font-family="Arial, Helvetica, sans-serif" font-size="26" text-anchor="middle" fill="#3a4b7a">Designed for poverty tracking first, but reusable for other data domains</text>
+  <text x="700" y="570" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle" fill="#5b6b93">Local containers first, then Azure-ready deployment</text>
+</svg>
