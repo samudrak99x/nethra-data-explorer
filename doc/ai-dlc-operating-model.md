@@ -29,12 +29,6 @@ This phase turns intent into delivery-ready shape through:
 - bolt candidates
 - validation points
 
-## Stage -> Bolt -> Unit Model
-
-The MVP is organized as stages.
-Each stage contains bolts.
-Each bolt is elaborated into units.
-
 ## Bolt Board
 
 The execution surface.
@@ -72,7 +66,7 @@ Human validation happens at:
 
 ## Execution Loop
 
-Intent -> Elaboration -> Stage Selection -> Bolt Decomposition -> Unit Elaboration -> Agent Execution -> Agent Testing -> Human Validation -> Commit / PR / Merge -> Learning Log -> Next Intent
+Intent -> Elaboration -> Bolt Decomposition -> Agent Execution -> Agent Testing -> Human Validation -> Commit / PR / Merge -> Learning Log -> Next Intent
 
 ## Learning Layer
 
@@ -88,7 +82,7 @@ Retain:
 
 - Intent Board
 - Elaboration Phase
-- Stage Board
+- Architecture Layer
 - Bolt Board
 - Validation Gates
 - Learning Layer

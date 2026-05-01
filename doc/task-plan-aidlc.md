@@ -1,13 +1,12 @@
 Nethra Data Explorer — AI-DLC Operating Plan (AI-DLC Version)
 =============================================================
 
-This AI-DLC formatted document converts the original `task-plan.txt` into explicit AI-DLC artifacts: Intents, Stages, Bolts, Units, Agents, Validation gates, and Learning records. Nothing from the original plan is omitted; items are reorganized so each stage, bolt, unit, task and test is represented as an AI-DLC entity.
+This AI-DLC formatted document converts the original `task-plan.txt` into explicit AI-DLC artifacts: Intents, Bolts, Units, Agents, Validation gates, and Learning records. Nothing from the original plan is omitted; items are reorganized so each cycle, bolt set, task and test is represented as an AI-DLC entity.
 
 High-level mapping used in this conversion
 - Intent: product- or domain-level goal (mapped from Intent Board, Intent Layer)
-- Stage: an MVP phase or release slice (mapped from MVP stages)
-- Bolt: the smallest useful execution unit inside a stage (mapped from Bolt Board and Bolt Sets)
-- Unit: a task inside a bolt, produced during bolt elaboration (mapped from Tasks lists)
+- Bolt: the smallest useful execution unit (mapped from Bolt Board and Bolt Sets)
+- Unit: a task inside a bolt (mapped from Tasks lists)
 - Agent Role: actor responsible for bolt/unit (mapped from Agent Roles)
 - Validation: test or acceptance criteria (mapped from Testing Plan / Demo At End)
 - Learning: logs, decision records, and audit artifacts (mapped from Learning Layer)
@@ -56,32 +55,9 @@ Intent Layer (AI-DLC)
 Elaboration Phase (AI-DLC artifact)
 - Produces: intent briefs, acceptance criteria, assumptions, risks, dependencies, architecture direction, bolt candidates, validation points
 
-Stage Board (MVP Phases)
-----------------------
-The MVP is organized into stages. Each stage contains bolts. Each bolt is elaborated into units.
-
-MVP Stages
-- Stage 1: Data Onboard & Schema
-  - Architecture Bolt
-  - Foundation Bolt
-  - Import Bolt
-- Stage 2: Generated UI + Charts
-  - Interface Bolt
-  - Visualization Bolt
-- Stage 3: Basic Analysis & Explainability
-  - Pattern Bolt
-  - Explainability Bolt
-- Stage 4: Testable Report + Polish
-  - Statistics Bolt
-  - Conversation Bolt
-  - Reasoning Bolt
-  - Narrative Bolt
-  - Workspace Bolt
-  - Delivery Bolt
-
 Bolt Board (AI-DLC)
 ---------------------
-The Bolt Board lists Bolts (named per original Bolt Sets). Each Bolt contains Units (explicit tasks produced during bolt elaboration). Each Unit should have: one outcome, one owner agent, one input set, one output set, one validation check, and steering point if needed.
+The Bolt Board lists Bolts (named per original Bolt Sets). Each Bolt contains Units (explicit tasks). Each Unit should have: one outcome, one owner agent, one input set, one output set, one validation check, and steering point if needed.
 
 Agent Roles (AI-DLC Roles)
 - Architect Agent
@@ -96,7 +72,7 @@ Validation Gates (AI-DLC)
 - Human validation at: intent approval, elaboration approval, architecture approval, bolt approval, integration review, demo review, release approval
 
 Execution Loop (AI-DLC Sequence)
-- Intent -> Elaboration -> Stage Selection -> Bolt Decomposition -> Unit Elaboration -> Agent Execution -> Agent Testing -> Human Validation -> Commit/PR/Merge -> Learning Log -> Next Intent
+- Intent -> Elaboration -> Bolt Decomposition -> Agent Execution -> Agent Testing -> Human Validation -> Commit/PR/Merge -> Learning Log -> Next Intent
 
 Learning Layer (AI-DLC Data)
 - Retain: learning log, AI decision log, assumptions and risks, architecture decision records, review notes, validation notes
@@ -119,36 +95,21 @@ AI-DLC Operating Phases (mapped from original)
 - Phase C: AI-DLC Implementation Foundation
   - Cycle 0.7: Foundation And Product Shape
   - Cycle 1: Dataset Import And Schema Detection (Import Bolt Set)
-Phase D: AI-DLC Capability Bolts
-  - Cycle 0.8: Architecture Bolt
-  - Cycle 2: Dynamic UI Generator Bolt
-  - Cycle 2.5: Ontology Discovery And Semantic Tagging Bolt
-  - Cycle 2.6: Expert-Guided Knowledge Graph Enrichment Bolt
-  - Cycle 3: Charts And Data Views Bolt
-  - Cycle 4: Analysis Engine Bolt
-  - Cycle 4.5: Agentic Explainable AI Pattern Discovery Bolt
-  - Cycle 4.6: Statistical Modeling And Prediction Engine Bolt
-  - Cycle 5: Agentic Explanation Panel Bolt
-  - Cycle 6: LLM Agent Integration Bolt
-  - Cycle 7: Report Builder Bolt
-  - Cycle 8: Dataset Library And Reusability Bolt
-  - Cycle 9: Polish, Reliability, And Demo Package Bolt
+- Phase D: AI-DLC Capability Bolt Sets
+  - Cycle 2: Dynamic UI Generator (Interface Bolt Set)
+  - Cycle 2.5: Ontology Discovery And Semantic Tagging (Meaning Bolt Set)
+  - Cycle 2.6: Expert-Guided Knowledge Graph Enrichment (Knowledge Bolt Set)
+  - Cycle 3: Charts And Data Views (Visualization Bolt Set)
+  - Cycle 4: Analysis Engine (Pattern Bolt Set)
+  - Cycle 4.5: Agentic Explainable AI Pattern Discovery (Explainability Bolt Set)
+  - Cycle 4.6: Statistical Modeling And Prediction Engine (Statistics Bolt Set)
+  - Cycle 5: Agentic Explanation Panel (Conversation Bolt Set)
+  - Cycle 6: LLM Agent Integration (Reasoning Bolt Set)
+  - Cycle 7: Report Builder (Narrative Bolt Set)
+  - Cycle 8: Dataset Library And Reusability (Workspace Bolt Set)
+  - Cycle 9: Polish, Reliability, And Demo Package (Delivery Bolt Set)
 
-Bolt Definitions (each bolt is elaborated into Units during bolt elaboration)
-
-Bolt: bolt.architecture.bootstrap (Cycle 0.8)
-- Title: Architecture Bolt
-- Units:
-  - unit.arch.record-adr: Define initial architecture decision records
-  - unit.arch.azure-map: Confirm Azure service mapping
-  - unit.arch.local-compose: Create local container layout and Docker Compose baseline
-  - unit.arch.skeleton: Scaffold frontend and backend shells
-  - unit.arch.authn: Define authentication model
-  - unit.arch.authz: Define authorization model
-  - unit.arch.secrets: Define secrets and environment strategy
-  - unit.arch.deployment: Define deployment and health-check baseline
-- Validation:
-  - Architecture skeleton, auth model, Azure mapping, and local container workflow are documented and reviewable
+Bolt Definitions (each bolt includes Units mapped from original Tasks)
 
 Bolt: bolt.setup.codex-github (Cycle -1)
 - Title: Codex, GitHub, And Cycle Tracking Setup
@@ -242,7 +203,7 @@ Bolt: bolt.import.schema-detection (Cycle 1)
   - Upload valid CSV/JSON; handle missing values; confirm schema edits saved; test with poverty mock
 
 Bolt: bolt.ui.dynamic-generator (Cycle 2)
-- Title: Dynamic UI Generator Bolt
+- Title: Dynamic UI Generator
 - Units:
   - unit.ui.filter-panel: Build dynamic filter panel
   - unit.ui.country-selector: Country selector
@@ -259,7 +220,7 @@ Bolt: bolt.ui.dynamic-generator (Cycle 2)
   - Datasets with year create time slider; country creates country filter; categories create checkbox filters; multiple measures create metric selector
 
 Bolt: bolt.meaning.ontology-discovery (Cycle 2.5)
-- Title: Ontology Discovery And Semantic Tagging Bolt
+- Title: Ontology Discovery And Semantic Tagging
 - Units:
   - unit.ontology.model-types: Define OntologyModel TypeScript types
   - unit.ontology.semantic-types: Define SemanticTag TypeScript types
