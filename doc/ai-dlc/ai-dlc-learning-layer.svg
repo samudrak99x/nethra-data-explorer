@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <rect width="1400" height="800" fill="#ffffff"/>
+  <rect x="70" y="70" width="1260" height="660" rx="28" fill="#f8fff9" stroke="#2f855a" stroke-width="4"/>
+  <text x="700" y="135" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="#1f5e42">AI-DLC Learning Layer</text>
+  <text x="700" y="185" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle" fill="#4d6c5a">What each cycle teaches the next one</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#1f5e42">
+    <rect x="120" y="280" width="250" height="120" rx="18" fill="#eafaf1" stroke="#27ae60" stroke-width="3"/><text x="245" y="333" text-anchor="middle">Learning Log</text>
+    <rect x="400" y="280" width="250" height="120" rx="18" fill="#eef6ff" stroke="#2f80ed" stroke-width="3"/><text x="525" y="333" text-anchor="middle">Decision Log</text>
+    <rect x="680" y="280" width="250" height="120" rx="18" fill="#fff6e8" stroke="#e67e22" stroke-width="3"/><text x="805" y="333" text-anchor="middle">Review Notes</text>
+    <rect x="960" y="280" width="250" height="120" rx="18" fill="#f9ebff" stroke="#9b51e0" stroke-width="3"/><text x="1085" y="333" text-anchor="middle">ADR Updates</text>
+    <rect x="250" y="470" width="900" height="120" rx="18" fill="#f5fff8" stroke="#2f855a" stroke-width="3"/><text x="700" y="524" text-anchor="middle">Refine intent, bolts, and validation from what the system learned</text><text x="700" y="558" font-size="18" text-anchor="middle">Each cycle feeds the next stage and improves execution quality</text>
+  </g>
+</svg>
